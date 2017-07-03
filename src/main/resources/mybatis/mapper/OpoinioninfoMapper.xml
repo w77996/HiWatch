@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hiwatch.watch.dao.OpoinioninfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hiwatch.watch.pojo.Opoinioninfo" >
+    <id column="opinion_id" property="opinionId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hiwatch.watch.pojo.Opoinioninfo" extends="BaseResultMap" >
+    <result column="opinion_content" property="opinionContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    opinion_id, user_id, contact, create_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    opinion_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from opinion_info
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from opinion_info
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hiwatch.watch.pojo.Opoinioninfo" >
+    insert into opinion_info (opinion_id, user_id, contact, 
+      create_time, opinion_content)
+    values (#{opinionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{contact,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{opinionContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hiwatch.watch.pojo.Opoinioninfo" >
+    insert into opinion_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="opinionId != null" >
+        opinion_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="opinionContent != null" >
+        opinion_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="opinionId != null" >
+        #{opinionId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opinionContent != null" >
+        #{opinionContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hiwatch.watch.pojo.Opoinioninfo" >
+    update opinion_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opinionContent != null" >
+        opinion_content = #{opinionContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hiwatch.watch.pojo.Opoinioninfo" >
+    update opinion_info
+    set user_id = #{userId,jdbcType=INTEGER},
+      contact = #{contact,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      opinion_content = #{opinionContent,jdbcType=LONGVARCHAR}
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hiwatch.watch.pojo.Opoinioninfo" >
+    update opinion_info
+    set user_id = #{userId,jdbcType=INTEGER},
+      contact = #{contact,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </update>
+</mapper>
