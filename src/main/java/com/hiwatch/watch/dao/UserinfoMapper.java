@@ -2,7 +2,7 @@ package com.hiwatch.watch.dao;
 
 import com.hiwatch.watch.entity.Userinfo;
 
-public interface UserinfoMapper {
+public interface UserinfoMapper extends BaseDao<Userinfo>{
     int deleteByPrimaryKey(Integer userId);
 
     int insert(Userinfo record);
