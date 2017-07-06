@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hiwatch.watch.dao.impl.UserinfoDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.hiwatch.watch.entity.Userinfo" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_account" property="userAccount" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="app_token" property="appToken" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="INTEGER" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="height" property="height" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="moving_object" property="movingObject" jdbcType="INTEGER" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    user_id, user_name, user_account, user_pwd, app_token, user_sex, birthday, height, 
+    weight, moving_object, photo, create_time
+  </sql>
+  
+  <!-- 根据搜索条件获取数据 -->
+  <sql id="condition_sql">
+    <if test="createTime != null and createTime != '' ">
+        and create_time <![CDATA[>=]]> CONCAT(#{createTime},' 00:00:00')
+    </if>
+    <if test="userAccount != null and userAccount != '' ">
+        and user_account = #{userAccount}
+    </if>
+    <if test="userId != null and userId != '' ">
+        and user_id = #{userId}
+    </if>
+    <if test="appToken != null and appToken != '' ">
+        and app_token = #{appToken}
+    </if>
+  </sql>
+  
+  <select id="listBy" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from wt_user_info
+    <where>
+    	<include refid="condition_sql" />
+    </where>
+  </select>
+    <!-- 根据id和token查询用户数 -->
+  <!-- <select id="selectUserNumByToken" resultType="java.lang.Integer" parameterType="java.util.Map">
+  	select count(*) from wt_user_info
+  	<where>
+  		<include refid="condition_sql"/>
+  	</where>
+  </select> -->
+  
+  <!-- 注册用户 -->
+  <insert id="insertSelective" parameterType="com.hiwatch.watch.entity.Userinfo" >
+    insert into wt_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userAccount != null" >
+        user_account,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd,
+      </if>
+      <if test="appToken != null" >
+        app_token,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="movingObject != null" >
+        moving_object,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAccount != null" >
+        #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="appToken != null" >
+        #{appToken,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="movingObject != null" >
+        #{movingObject,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <!--更新用户信息  --> 
+  <update id="updateByPrimaryKey" parameterType="com.hiwatch.watch.entity.Userinfo" >
+    update wt_user_info
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAccount != null" >
+        user_account = #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="appToken != null" >
+        app_token = #{appToken,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="movingObject != null" >
+        moving_object = #{movingObject,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wt_user_info
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wt_user_info
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hiwatch.watch.entity.Userinfo" >
+    insert into wt_user_info (user_id, user_name, user_account, 
+      user_pwd, app_token, user_sex, 
+      birthday, height, weight, 
+      moving_object, photo, create_time
+      )
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userAccount,jdbcType=VARCHAR}, 
+      #{userPwd,jdbcType=VARCHAR}, #{appToken,jdbcType=VARCHAR}, #{userSex,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{height,jdbcType=INTEGER}, #{weight,jdbcType=INTEGER}, 
+      #{movingObject,jdbcType=INTEGER}, #{photo,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+	
+  <update id="updateByPrimaryKeySe" parameterType="com.hiwatch.watch.entity.Userinfo" >
+    update wt_user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_account = #{userAccount,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      app_token = #{appToken,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      height = #{height,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      moving_object = #{movingObject,jdbcType=INTEGER},
+      photo = #{photo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

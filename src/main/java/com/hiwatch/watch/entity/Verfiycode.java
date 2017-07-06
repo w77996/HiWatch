@@ -3,9 +3,11 @@ package com.hiwatch.watch.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Verfiycode extends BaseEntity implements Serializable {
-    
-	private static final long serialVersionUID = 9114911264769644308L;
+public class Verfiycode extends BaseEntity implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5807118263733158963L;
 
 	private Integer verfiyId;
 
@@ -15,7 +17,7 @@ public class Verfiycode extends BaseEntity implements Serializable {
 
     private String type;
 
-    private String status;
+    private Integer status;
 
     private Date createTime;
 
@@ -51,12 +53,12 @@ public class Verfiycode extends BaseEntity implements Serializable {
         this.type = type == null ? null : type.trim();
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Date getCreateTime() {

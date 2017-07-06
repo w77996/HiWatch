@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.hiwatch.watch.dao.UserinfoMapper;
 import com.hiwatch.watch.dao.VerfiycodeMapper;
 import com.hiwatch.watch.entity.Userinfo;
 import com.hiwatch.watch.entity.Verfiycode;
 import com.hiwatch.watch.service.UserInfoService;
-
+@Service
 public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
@@ -29,7 +30,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public void addUserInfo(Userinfo userinfo, Verfiycode vccode) {
 		// TODO Auto-generated method stub
 		userinfoMapper.insert(userinfo);
-		verfiycodeMapper.update(vccode); 
+		//verfiycodeMapper.update(vccode); 
 	}
 
 	@Override

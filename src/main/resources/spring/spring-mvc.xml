@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc  
                         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-	<context:component-scan base-package="com.hiwatch.watch.controller"></context:component-scan>
+	<context:component-scan base-package="com.hiwatch.watch.controller"/>
 
 	<!-- 相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，配置一些messageconverter。即解决了@Controller注解的使用前提配置。 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
@@ -19,7 +19,7 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
 		<property name="prefix" value="/jsp/"></property>
-		<property name="prefix" value="/jsp/"></property>
+		<property name="suffix" value="/jsp/"></property>
 	</bean>
 
 	<!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->

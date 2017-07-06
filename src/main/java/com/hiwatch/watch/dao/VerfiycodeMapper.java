@@ -3,7 +3,7 @@ package com.hiwatch.watch.dao;
 import com.hiwatch.watch.entity.Verfiycode;
 
 public interface VerfiycodeMapper extends BaseDao<Verfiycode>{
-    int deleteByPrimaryKey(Integer verfiyId);
+   /* int deleteByPrimaryKey(Integer verfiyId);
 
     int insert(Verfiycode record);
 
@@ -13,5 +13,5 @@ public interface VerfiycodeMapper extends BaseDao<Verfiycode>{
 
     int updateByPrimaryKeySelective(Verfiycode record);
 
-    int updateByPrimaryKey(Verfiycode record);
+    int updateByPrimaryKey(Verfiycode record);*/
 }

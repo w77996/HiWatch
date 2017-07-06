@@ -61,7 +61,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" />
+		<property name="mapperLocations" value="classpath:mybatis/*.xml" />
 	</bean>
 
 	<!-- SqlSession模板类实例 -->
@@ -80,5 +80,6 @@
 	<!-- 注解事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<!--======= 事务配置 End =================== -->
+
 
 </beans>

@@ -1,6 +1,6 @@
 package com.hiwatch.watch.dao.impl;
 
-import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.hiwatch.watch.dao.BaseDao;
 import com.hiwatch.watch.entity.BaseEntity;
 import com.hiwatch.watch.exception.BaseException;
-import com.sun.tools.javac.util.List;
 
 
 /**
@@ -25,6 +24,7 @@ import com.sun.tools.javac.util.List;
 public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSupport implements BaseDao<T>  {
 	
 	protected static final Log LOG = LogFactory.getLog(BaseDaoImpl.class);
+	
 	public static final String SQL_INSERT = "insertSelective";//单挑插入数据sql
 	public static final String SQL_BATCH_INSERT ="batchInsert";//批量插入数据sql
 	public static final String SQL_UPDATE_BY_ID = "updateByPrimaryKey";//根据id更新数据
@@ -32,16 +32,15 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	public static final String SQL_DELETE_BY_ID = "deleteByPrimaryKey";//根据id删除数据
 	public static final String SQL_LIST_BY = "listBy";
 	
-	//public static final String SQL_UPDATE_BY_ID=""
 	
 	@Autowired
-	SqlSessionTemplate sqlSessionTemplate;
+	private SqlSessionTemplate sqlSessionTemplate;
 
-	public SqlSessionTemplate getSessionTemplate() {
+	public SqlSessionTemplate getSqlSessionTemplate() {
 		return sqlSessionTemplate;
 	}
 
-	public void setSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
 
@@ -58,7 +57,9 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 */
 	public int insert(T entity){
 		int result = sqlSessionTemplate.insert(getStatement(SQL_INSERT), entity);
+		
 		if(result <= 0 ){
+			System.out.println("insert 返回0");
 			throw  BaseException.DB_INSERT_RESULT_0.newInstence("insert 返回0 ", getStatement(SQL_INSERT));
 		}
 		return result;
@@ -71,7 +72,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#insert(com.sun.tools.javac.util.List)
 	 */
-	public int insert(List<T> list){
+	/*public int insert(List<T> list){
 		if(list.size() <= 0 || list ==null){
 			return 0;
 		}
@@ -80,7 +81,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 			throw BaseException.DB_LIST_IS_NULL.newInstence("数据库操作，批量插入返回0%{s}", getStatement(SQL_BATCH_INSERT));
 		}
 		return result;
-	}
+	}*/
 	/**
 	 * 按照id,单条更新数据
 	 * Title: update
@@ -89,14 +90,14 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#update(java.lang.Object)
 	 */
-	public int update(T entity){
+	/*public int update(T entity){
 		entity.setEditTime(new java.util.Date());
 		int result = sqlSessionTemplate.update(getStatement(SQL_UPDATE_BY_ID), entity);
 		if(result <= 0){
 			throw BaseException.DB_UPDATE_RESULT_0.newInstence("数据库操作，更新返回0%{s}", getStatement(SQL_UPDATE_BY_ID));
 		}
 		return result;
-	}
+	}*/
 	/*public int update(List<T> list){
 		if(list.size() < 0 || list == null){
 			return 0;
@@ -111,11 +112,11 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#getById(int)
 	 */
-	public T getById(int id){
+	/*public T getById(int id){
 		return sqlSessionTemplate.selectOne(getStatement(SQL_SELECT_BY_ID),id);
-	}
+	}*/
 	
-	public T getById(Map<String, Object> paramMap){
+	public T getBy(Map<String, Object> paramMap){
 		if(paramMap == null){
 			return null;
 		}
@@ -129,9 +130,9 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#delete(int)
 	 */
-	public int delete(int id){
+	/*public int delete(int id){
 		return sqlSessionTemplate.delete(getStatement(SQL_DELETE_BY_ID),id);
-	}
+	}*/
 	/**
 	 * 获取命名空间 
 	 * @Title:           getStatement
