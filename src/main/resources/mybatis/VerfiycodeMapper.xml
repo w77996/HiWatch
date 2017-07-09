@@ -12,6 +12,30 @@
   <sql id="Base_Column_List">
     verfiy_id, user_account, code, type, status, create_time
   </sql>
+  
+  
+  <!-- 根据搜索条件获取数据 -->
+  <sql id="condition_sql">
+    <if test="userAccount != null and userAccount != '' ">
+        and user_account = #{userAccount}
+    </if>
+    <if test="type != null and type != '' ">
+    	and type = #{type}
+    </if>
+  </sql>
+  
+  <!-- 查询验证码信息 -->
+  <select id="listBy" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+   
+    from verfiy_code
+    <where>
+    	<include refid="condition_sql" />
+    </where>
+    ORDER BY create_time DESC LIMIT 1
+  </select>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

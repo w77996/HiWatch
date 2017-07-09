@@ -30,7 +30,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public void addUserInfo(Userinfo userinfo, Verfiycode vccode) {
 		// TODO Auto-generated method stub
 		userinfoMapper.insert(userinfo);
-		//verfiycodeMapper.update(vccode); 
+		verfiycodeMapper.update(vccode); 
 	}
 
 	@Override
@@ -42,6 +42,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public void updateUserInfo(Userinfo userinfo) {
 		// TODO Auto-generated method stub
+		userinfoMapper.update(userinfo);
 
 	}
 

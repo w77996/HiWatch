@@ -19,7 +19,7 @@ public interface BaseDao<T> {
 	
 	//int insert(List<T> list);
 	
-	//int update(T entity);
+	int update(T entity);
 	
 	//int update(List<T> list);
 	

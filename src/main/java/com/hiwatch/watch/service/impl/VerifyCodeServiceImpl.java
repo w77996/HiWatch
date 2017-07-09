@@ -17,7 +17,6 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
 	@Override
 	public void addVerifyCode(Verfiycode verfiycode) {
 		// TODO Auto-generated method stub
-		System.out.println("service");
 		int result = verfiycodeMapper.insert(verfiycode);
 		System.out.println("insert result :"+ result);
 	}

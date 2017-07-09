@@ -90,14 +90,14 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#update(java.lang.Object)
 	 */
-	/*public int update(T entity){
+	public int update(T entity){
 		entity.setEditTime(new java.util.Date());
 		int result = sqlSessionTemplate.update(getStatement(SQL_UPDATE_BY_ID), entity);
 		if(result <= 0){
 			throw BaseException.DB_UPDATE_RESULT_0.newInstence("数据库操作，更新返回0%{s}", getStatement(SQL_UPDATE_BY_ID));
 		}
 		return result;
-	}*/
+	}
 	/*public int update(List<T> list){
 		if(list.size() < 0 || list == null){
 			return 0;
