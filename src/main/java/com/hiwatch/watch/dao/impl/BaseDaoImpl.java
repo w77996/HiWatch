@@ -72,7 +72,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#insert(com.sun.tools.javac.util.List)
 	 */
-	/*public int insert(List<T> list){
+	public int insert(List<T> list){
 		if(list.size() <= 0 || list ==null){
 			return 0;
 		}
@@ -81,7 +81,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 			throw BaseException.DB_LIST_IS_NULL.newInstence("数据库操作，批量插入返回0%{s}", getStatement(SQL_BATCH_INSERT));
 		}
 		return result;
-	}*/
+	}
 	/**
 	 * 按照id,单条更新数据
 	 * Title: update
@@ -121,6 +121,12 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 			return null;
 		}
 		return sqlSessionTemplate.selectOne(getStatement(SQL_LIST_BY), paramMap);
+	}
+	public List<T> listBy(Map<String,Object> paramMap ){
+		if(paramMap == null){
+			return null;
+		}
+		return sqlSessionTemplate.selectList(getStatement(SQL_LIST_BY), paramMap);
 	}
 	/**
 	 * 根据ID删除数据

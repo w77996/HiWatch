@@ -17,7 +17,7 @@ public interface BaseDao<T> {
 
 	int insert(T entity);
 	
-	//int insert(List<T> list);
+	int insert(List<T> list);
 	
 	int update(T entity);
 	
@@ -31,7 +31,7 @@ public interface BaseDao<T> {
 	
 	public T getBy(Map<String, Object> paramMap);
 	
-	//public List<T> listBy(Map<String, Object> param);
+	public List<T> listBy(Map<String, Object> param);
 	
 	//public List<T> listByColum(Map<String, Object> param);
 	
@@ -42,6 +42,8 @@ public interface BaseDao<T> {
 	/*int delete(List<T> list);
 	
 	int delete(Map<String, Object> param);*/
+	
+	//public int insertByBatch(List<T> list);
 	
 	public SqlSession getSqlSession();
 	
