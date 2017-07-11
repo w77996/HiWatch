@@ -79,9 +79,9 @@ public class SleepController extends BaseController{
 			if(userId <= 0 || StringUtils.isBlank(appToken) || StringUtils.isBlank(day)){
 				return JsonUtils.responseJson(jsonObject, ConstantUtils.PARAMETER_IS_NULL);
 			}
-			/*if(!verifyAppToken(userId, appToken)){
+			if(!verifyAppToken(userId, appToken)){
 				return JsonUtils.responseJson(jsonObject, ConstantUtils.NO_LOGIN_IN);
-			}*/
+			}
 			Map<String, Object> param = new HashMap<String, Object>();
 			param.put("userId", userId);
 			param.put("sleepStart", day);

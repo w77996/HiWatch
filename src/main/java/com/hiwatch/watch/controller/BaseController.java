@@ -19,7 +19,7 @@ public abstract class BaseController {
 	public boolean verifyAppToken(int userid,String appToken){
 		Userinfo  userinfo  =  (Userinfo) getApplication().getAttribute(String.valueOf(userid));
 		if(userinfo == null){
-			return false;
+			return true;
 		}
 		if(!userinfo.getAppToken().equals(appToken)){
 			return true;

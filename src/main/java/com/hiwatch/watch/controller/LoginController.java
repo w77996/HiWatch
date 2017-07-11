@@ -244,7 +244,7 @@ public class LoginController extends BaseController {
 			if(StringUtils.isBlank(appToken) || userId<=0 || StringUtils.isBlank(newPwd) || StringUtils.isBlank(userPwd)){
 				return JsonUtils.responseJson(jsonObject, ConstantUtils.PARAMETER_IS_NULL);
 			}
-			if(!verifyAppToken(userId, appToken)){
+			if(verifyAppToken(userId, appToken)){
 				return JsonUtils.responseJson(jsonObject, ConstantUtils.NO_LOGIN_IN);
 			}
 			Userinfo userinfo = (Userinfo) getApplication().getAttribute(String.valueOf(userId));
