@@ -33,11 +33,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		verfiycodeMapper.update(vccode); 
 	}
 
-	@Override
-	public void delUserInfo(int id) {
-		// TODO Auto-generated method stub
 
-	}
 
 	@Override
 	public void updateUserInfo(Userinfo userinfo) {
@@ -50,6 +46,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public void updateUserInfoAndCode(Userinfo userinfo, Verfiycode vccode) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Userinfo queryUserInofById(int userid) {
+		// TODO Auto-generated method stub
+		return userinfoMapper.getById(userid);
 	}
 
 }

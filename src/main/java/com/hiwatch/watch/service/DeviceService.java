@@ -6,7 +6,12 @@ import com.hiwatch.watch.entity.Userdevice;
 
 public interface DeviceService {
 
-	Userdevice queryUserdevice(Map<String, Object> param);
+	int queryUserdevice(Map<String, Object> param);
 	
 	void addUserDevice(Userdevice userdevice);
+	
+	Userdevice queryUserDevice(Map<String, Object> param);
+	
+	void deleteUserDevice(int userid);
+	
 }

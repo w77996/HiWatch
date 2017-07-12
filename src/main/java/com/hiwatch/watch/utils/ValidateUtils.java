@@ -53,4 +53,7 @@ public class ValidateUtils {
 		Pattern pattern = Pattern.compile("^1[3|4|5|7|8][0-9]{9}$");
 		return pattern.matcher(mobile).matches();
 	}
+	public static boolean isQQ(String qq){
+		return false;
+	}
 }

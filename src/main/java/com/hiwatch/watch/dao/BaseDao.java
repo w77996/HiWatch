@@ -25,7 +25,7 @@ public interface BaseDao<T> {
 	
 	//int update(Map<String, Object> param);
 	
-	//T getById(int id);
+	T getById(int id);
 	
 	//public T getByColum(Map<String, Object> param);
 	
@@ -37,7 +37,7 @@ public interface BaseDao<T> {
 	
 	//Long getCountByColum(Map<String, Object> param);
 	
-	//int delete(int id);
+	int delete(int id);
 	
 	/*int delete(List<T> list);
 	

@@ -27,7 +27,7 @@ public class ConstantUtils {
 	public static final Object USER_UNBOUND_DEVICE = 1109;//用户未绑定设备
 	
 	//用户图像保存路径
-	public static final String TOMCAT_URL ="/alidata/robot/watch-tomcat-8083/webapps" ;
+	public static final String TOMCAT_URL ="/" ;
 	//用户图像
 	public static final String USUE_POTHO_URL = "/img/";
 }

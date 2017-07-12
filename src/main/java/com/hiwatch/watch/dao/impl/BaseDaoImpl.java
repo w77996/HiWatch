@@ -112,9 +112,9 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#getById(int)
 	 */
-	/*public T getById(int id){
+	public T getById(int id){
 		return sqlSessionTemplate.selectOne(getStatement(SQL_SELECT_BY_ID),id);
-	}*/
+	}
 	
 	public T getBy(Map<String, Object> paramMap){
 		if(paramMap == null){
@@ -136,9 +136,12 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	 * @return
 	 * @see com.hiwatch.watch.dao.BaseDao#delete(int)
 	 */
-	/*public int delete(int id){
+	public int delete(int id){
+		if(id <=0){
+			return 0;
+		}
 		return sqlSessionTemplate.delete(getStatement(SQL_DELETE_BY_ID),id);
-	}*/
+	}
 	/**
 	 * 获取命名空间 
 	 * @Title:           getStatement

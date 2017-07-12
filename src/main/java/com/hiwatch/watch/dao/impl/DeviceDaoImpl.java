@@ -2,6 +2,7 @@ package com.hiwatch.watch.dao.impl;
 
 import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.hiwatch.watch.dao.DeviceMapper;
@@ -18,7 +19,15 @@ public class DeviceDaoImpl extends BaseDaoImpl<Userdevice> implements DeviceMapp
 	@Override
 	public int queryUserOrDevice(Map<String, Object> param) {
 		// TODO Auto-generated method stub
-		return this.getSqlSessionTemplate().selectOne(getStatement("queryUserOrDevice"),param);
+		System.out.println("fsadfasfdasdfsadfasdfsa");
+		SqlSessionTemplate sessionTemplate = this.getSqlSessionTemplate();
+		if(sessionTemplate !=null){
+			System.out.println("no null");
+		}
+		System.out.println(getStatement("queryUserOrDevice"));
+		int num = sessionTemplate.selectOne(getStatement("queryUserOrDevice"),param);
+		System.out.println(num+"6666666666");
+		return num;
 	}
 
 	

@@ -13,9 +13,10 @@ public interface UserInfoService {
 	
 	Userinfo queryUserInfoByMoBile(String mobile);
 	
+	Userinfo queryUserInofById(int userid);
+	
 	void addUserInfo(Userinfo userinfo,Verfiycode vccode);
 	
-	void delUserInfo(int id);
 	
 	void updateUserInfo(Userinfo userinfo);
 	

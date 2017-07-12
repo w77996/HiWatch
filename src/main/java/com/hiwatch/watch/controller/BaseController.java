@@ -1,5 +1,7 @@
 package com.hiwatch.watch.controller;
 
+import java.io.File;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -26,5 +28,16 @@ public abstract class BaseController {
 		}
 		return false;
 	}
-
+	
+	public void createFloder(String path){
+		try {
+			File folder = new File(path);
+			if(!folder.exists()){
+				folder.mkdirs();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 }

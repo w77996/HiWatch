@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hiwatch.watch.dao.impl.UserdeviceDaoImpl">
+<mapper namespace="com.hiwatch.watch.dao.impl.DeviceDaoImpl">
   <resultMap id="BaseResultMap" type="com.hiwatch.watch.entity.Userdevice">
     <id column="device_id" jdbcType="INTEGER" property="deviceId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
@@ -11,6 +11,26 @@
   <sql id="Base_Column_List">
     device_id, user_id, device_name, device_imei, create_time
   </sql>
+  <!-- 查询条件 -->
+  <sql id="condition_sql">
+  	<if test="userId != null and userId!= ''">
+  		and user_id = #{userId}
+  	</if>
+  	<if test="deviceId != null and deviceId != '' ">
+  		and device_id = #{deviceId}
+  	</if>
+  	<if test="deviceImei != null and deviceImei != ''">
+  		and device_imei = #{deviceImei}
+  	</if>
+  </sql>
+  <!-- 查询用户绑定设备 -->
+  <select id="listBy" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	select * from user_device
+  	<where>
+  		<include refid="condition_sql"/>
+  	</where>
+  </select>
+  <!-- 删除用户绑定信息 -->
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -22,7 +42,8 @@
     where device_id = #{deviceId,jdbcType=INTEGER}
   </delete>
   <select id="queryUserOrDevice" resultType="java.lang.Integer" parameterType="java.util.Map">
-  	select count(*) from user_device where 1=1 and (device_imei = #{deviceImei} or user_id = #{user_id})
+  	select count(*) from user_device
+  	where 1=1 and (device_imei = #{deviceImei} or user_id = #{userId})
   </select>
   <insert id="insert" parameterType="com.hiwatch.watch.entity.Userdevice">
     insert into user_device (device_id, user_id, device_name, 
