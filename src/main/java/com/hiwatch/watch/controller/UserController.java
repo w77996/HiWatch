@@ -35,7 +35,15 @@ public class UserController extends BaseController{
 	private static final Logger LOG = Logger.getLogger(UserController.class);
 	@Autowired
 	private UserInfoService userInfoService;
-	
+	/**
+	 * 上传头像
+	 * @Title:           setPhoto
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/photo")
 	public String setPhoto(HttpServletRequest request){
@@ -96,7 +104,15 @@ public class UserController extends BaseController{
 		}
 		return jsonObject.toString();
 	}
-	
+	/**
+	 * 设置用户信息
+	 * @Title:           setUserinfo
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/setUserinfo")
 	public String setUserinfo(HttpServletRequest request){
@@ -146,6 +162,15 @@ public class UserController extends BaseController{
 		}
 		return jsonObject.toString();
 	}
+	/**
+	 * 获取用户信息
+	 * @Title:           getUserInfo
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/getuserinfo")
 	public String getUserInfo(HttpServletRequest request){

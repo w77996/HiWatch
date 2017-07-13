@@ -30,7 +30,15 @@ public class StepController extends BaseController {
 	private static final Logger LOG = Logger.getLogger(StepController.class);
 	@Autowired
 	private StepService stepService;
-	
+	/**
+	 * 上传步数
+	 * @Title:           uploadstep
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/uploadstep")
 	public String uploadstep(HttpServletRequest request){
@@ -89,7 +97,15 @@ public class StepController extends BaseController {
 		}
 		return jsonObject.toString();
 	}
-	
+	/**
+	 * 查询步数
+	 * @Title:           queryStep
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/querystep")
 	public String queryStep(HttpServletRequest request){

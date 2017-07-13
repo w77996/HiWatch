@@ -18,6 +18,16 @@ public abstract class BaseController {
 	protected HttpSession getSession(){
 		return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 	}
+	/**
+	 * 是否登录验证
+	 * @Title:           verifyAppToken
+	 * @Description:     TODO
+	 * @param:           @param userid
+	 * @param:           @param appToken
+	 * @param:           @return   
+	 * @return:          boolean   
+	 * @throws
+	 */
 	public boolean verifyAppToken(int userid,String appToken){
 		Userinfo  userinfo  =  (Userinfo) getApplication().getAttribute(String.valueOf(userid));
 		if(userinfo == null){
@@ -28,7 +38,14 @@ public abstract class BaseController {
 		}
 		return false;
 	}
-	
+	/**
+	 * 创建文件夹
+	 * @Title:           createFloder
+	 * @Description:     TODO
+	 * @param:           @param path   
+	 * @return:          void   
+	 * @throws
+	 */
 	public void createFloder(String path){
 		try {
 			File folder = new File(path);

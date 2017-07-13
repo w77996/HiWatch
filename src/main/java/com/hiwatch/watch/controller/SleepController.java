@@ -28,7 +28,15 @@ public class SleepController extends BaseController{
 	private static final Logger LOG = Logger.getLogger(SleepController.class);
 	@Autowired
 	private SleepService sleepService;
-
+	/**
+	 * 上传睡眠数据
+	 * @Title:           uploadSleep
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/uploadsleep")
 	public String uploadSleep(HttpServletRequest request){
@@ -65,7 +73,15 @@ public class SleepController extends BaseController{
 		}
 		return jsonObject.toJSONString();
 	}
-	
+	/**
+	 * 查询睡眠数据
+	 * @Title:           querysleep
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/querysleep")
 	public String querysleep(HttpServletRequest request){

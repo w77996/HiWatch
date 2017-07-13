@@ -74,7 +74,15 @@ public class RegardingController extends BaseController{
 		}
 		return jsonObject.toString();
 	}
-	
+	/**
+	 * 获取版本信息
+	 * @Title:           getVersion
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/getVersion")
 	public String getVersion(HttpServletRequest request){
@@ -100,7 +108,15 @@ public class RegardingController extends BaseController{
 		}
 		return jsonObject.toString();
 	}
-	
+	/**
+	 * 用户协议
+	 * @Title:           getAgreement
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/agreement")
 	public String getAgreement(HttpServletRequest request){

@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 /**
  * 
- * Description:
+ * Description:Dao基类，编写数据库操作接口
  * @author w77996
  * @date 2017年7月5日 下午6:23:58
  * @param <T>

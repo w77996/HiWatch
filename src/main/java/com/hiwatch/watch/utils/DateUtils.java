@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 /**
  * 日期工具类
- * @author liufeng
+ * @author w77996
  */
 public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 

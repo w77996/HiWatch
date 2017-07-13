@@ -116,7 +116,15 @@ public class DeviceController extends BaseController {
 		}
 		return jsonObject.toString();
 	}
-	
+	/**
+	 * 解除绑定
+	 * @Title:           unboundDevice
+	 * @Description:     TODO
+	 * @param:           @param request
+	 * @param:           @return   
+	 * @return:          String   
+	 * @throws
+	 */
 	@ResponseBody
 	@RequestMapping("/unbound")
 	public String unboundDevice(HttpServletRequest request){
